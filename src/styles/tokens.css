@@ -1,0 +1,23 @@
+:root {
+  --color-red: #f1261d;
+  --color-red-bright: #ff3329;
+  --color-red-deep: #b9140e;
+  --color-ink: #070707;
+  --color-ink-soft: #111111;
+  --color-paper: #f3f0ea;
+  --color-paper-2: #e9e5dd;
+  --color-white: #ffffff;
+  --color-muted: #8f8d88;
+  --color-line: rgba(7, 7, 7, 0.14);
+  --color-line-dark: rgba(255, 255, 255, 0.14);
+
+  --font-display: "Space Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Inter", "Helvetica Neue", Arial, sans-serif;
+
+  --max-width: 1480px;
+  --page-pad: clamp(20px, 4.3vw, 72px);
+  --section-space: clamp(92px, 10vw, 168px);
+  --radius-sm: 4px;
+  --radius-md: 14px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+}
