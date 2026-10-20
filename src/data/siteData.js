@@ -1,19 +1,20 @@
 export const siteConfig = {
-  showServices: false,
+  showServices: true,
   showUpcomingVentures: false,
   showProductionPartners: true,
 }
 
 export const navItems = [
-  { label: 'Studio', href: '#about' },
+  { label: 'About', href: '#about' },
   { label: 'Work', href: '#work' },
+  { label: 'Services', href: '#services' },
   { label: 'Network', href: '#global' },
   { label: 'Contact', href: '#contact' },
 ]
 
 export const studioFacts = [
   { value: 'Karachi', label: 'Production base' },
-  { value: '08', target: 8, pad: 2, label: 'Markets in profile' },
+  { value: '07', target: 7, pad: 2, label: 'Production markets' },
   { value: '100+', target: 100, suffix: '+', label: 'TVCs, events & reality shows' },
 ]
 
@@ -25,7 +26,6 @@ export const markets = [
   'Sri Lanka',
   'Singapore',
   'Poland',
-  'India',
 ]
 
 export const works = [
@@ -45,10 +45,18 @@ export const works = [
 ]
 
 export const services = [
-  { title: 'Full-Service Production', items: ['Film production', 'TV commercials', 'Corporate & social video'] },
-  { title: 'Pre-Production', items: ['Script development', 'Concept creation', 'Storyboarding', 'Location scouting'] },
-  { title: 'Production', items: ['Crew management', 'Equipment', 'Set design', 'Casting & talent'] },
-  { title: 'Post-Production', items: ['Editing', 'VFX', 'Animation', 'Sound & music'] },
+  'TV Commercials',
+  'Movie Trailers',
+  'Music Videos',
+  'Corporate Videos',
+  'Brand Videos',
+  'Promo Videos',
+  'Viral Videos',
+  'Documentaries',
+  'Independent Films',
+  'Web Commercials',
+  'Table Top Productions',
+  'Post Production Works',
 ]
 
 export const brandLogos = [
@@ -75,6 +83,8 @@ export const partnerLogos = [
 export const contact = {
   website: 'www.sevenfilms.net',
   email: 'info@sevenfilms.net',
-  phone: '+92 321 8206133',
-  address: 'M. Yousuf Chamber, Plot No. A-30, Office No. 203, 2nd Floor, Shahrah-e-Faisal, Karachi',
+  phone: '+92 321 870 7806',
+  owner: 'Salman Hasan',
+  producer: 'Muhammad Yaseen',
+  address: 'Office # 02, 2nd Floor, Building # 133-C, Main Khayaban-e-Ittehad, 25th Lane, Phase 07, DHA, Karachi, Pakistan',
 }

@@ -16,7 +16,7 @@ const socialChannels = [
 const details = [
   {
     icon: Phone,
-    label: 'Hello',
+    label: `Producer · ${contact.producer}`,
     value: contact.phone,
     href: `tel:${contact.phone.replace(/\s/g, '')}`,
   },
@@ -53,14 +53,14 @@ export default function Contact() {
       <div className="container contact__inner">
         <div className="contact__intro">
           <Reveal direction="left" distance={24}>
-            <span className="contact__eyebrow">04 / Contact</span>
+            <span className="contact__eyebrow">06 / Contact</span>
             <h2>Bring us the brief.<br /><span>We&apos;ll bring it to life.</span></h2>
           </Reveal>
 
           <Reveal className="contact__intro-note" direction="right" distance={20} delay={0.1}>
             <span>Karachi / Pakistan</span>
             <strong className="contact__question">Do you have any questions?</strong>
-            <p>Your local and global film &amp; video production partner.</p>
+            <p>Your global video production partner.</p>
           </Reveal>
         </div>
 
@@ -71,7 +71,11 @@ export default function Contact() {
               <span>{contact.email}</span>
               <ArrowUpRight />
             </a>
-            <p>Commercials, branded content, film and international production support from Karachi.</p>
+            <p>Commercials, film, branded content and international production consultancy, guided by an experienced team.</p>
+            <div className="contact__people">
+              <div><span>Proprietor</span><strong>{contact.owner}</strong></div>
+              <div><span>Producer</span><strong>{contact.producer}</strong></div>
+            </div>
           </Reveal>
 
           <div className="contact__directory contact__directory--rows">
@@ -119,7 +123,7 @@ export default function Contact() {
         <div className="contact__bottom">
           <div>
             <BrandLockup compact light />
-            <span className="contact__tagline">Your local and global production partner</span>
+            <span className="contact__tagline">Your global video production partner</span>
           </div>
           <span>© {new Date().getFullYear()} Seven Films</span>
           <a href="#top">Back to top ↑</a>

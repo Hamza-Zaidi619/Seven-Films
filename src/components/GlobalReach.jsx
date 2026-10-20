@@ -12,14 +12,14 @@ export default function GlobalReach() {
       <div className="container network-shell">
         <div className="network-heading">
           <Reveal direction="left" distance={24}>
-            <SectionEyebrow dark>03 / Production network</SectionEyebrow>
+            <SectionEyebrow dark>05 / Production network</SectionEyebrow>
             <h2 className="display-heading display-heading--light">
-              One partner.<br /><span>Multiple markets.</span>
+              Add one partner.<br /><span>Win multiple markets.</span>
             </h2>
           </Reveal>
 
           <Reveal className="network-heading__copy" direction="right" distance={22} delay={0.1}>
-            <span className="network-heading__index">08 / markets</span>
+            <span className="network-heading__index">{String(markets.length).padStart(2, '0')} / markets</span>
             <p>
               Strategic production relationships across Asia, the Middle East and Europe help Seven Films
               coordinate crews, locations and production support beyond Pakistan.
@@ -33,7 +33,7 @@ export default function GlobalReach() {
               <span>Production markets</span>
               <span>Local craft / global support</span>
             </div>
-            <AnimatedMetric target={8} pad={2} className="network-metric__number" />
+            <AnimatedMetric target={markets.length} pad={2} className="network-metric__number" />
             <div className="network-metric__bottom">
               <span>Pakistan</span>
               <span>Asia / Middle East / Europe</span>

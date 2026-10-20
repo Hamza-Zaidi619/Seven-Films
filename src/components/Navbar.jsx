@@ -33,12 +33,12 @@ export default function Navbar() {
           Start a production <ArrowUpRight size={14} />
         </a>
 
-        <button className="navbar__menu" type="button" aria-label="Toggle menu" onClick={() => setOpen((v) => !v)}>
+        <button className="navbar__menu" type="button" aria-label={open ? 'Close navigation menu' : 'Open navigation menu'} aria-expanded={open} aria-controls="mobile-nav" onClick={() => setOpen((v) => !v)}>
           {open ? <X /> : <Menu />}
         </button>
 
         {open && (
-          <div className="mobile-menu">
+          <div className="mobile-menu" id="mobile-nav" role="navigation" aria-label="Mobile navigation">
             {navItems.map((item) => (
               <a key={item.href} href={item.href} onClick={() => setOpen(false)}>{item.label}</a>
             ))}

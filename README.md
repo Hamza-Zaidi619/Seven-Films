@@ -1,41 +1,43 @@
-# Seven Films Website Prototype — V7
+# Seven Films — final brief implementation
 
-— Website Prototype V6
+Premium, responsive React/Vite website for Seven Films, based on the client's **Seven Films Website Brief final.pdf**, with the user's requested overrides. The supplied brands and production-partner grids, portfolio, red/black network system and Framer Motion reveals are retained.
 
-Premium React/Vite front-end direction for Seven Films, structured as reusable components rather than a deck-to-web translation.
+## Requirements
+Node.js 18+ and npm.
 
-## V6 refinements
-
-- Hero CTAs use a cleaner production-studio treatment: white pill primary action + understated discovery link.
-- Responsive overflow in the editorial “Way We Work / Our Strength” cards is fixed; long headlines no longer crop.
-- Production-partner artwork was re-extracted from the supplied reference and is rendered with `object-fit: contain` inside consistent plates, so marks are not accidentally clipped.
-- Partner order follows the supplied Production Partners artwork.
-- Contact hierarchy includes the supplied “Do you have any questions?” prompt, website, email, phone, Karachi office address, and placeholders for the social channels visible in the profile.
-- About retains the supplied local/global positioning and “From script to screen, effortlessly.” language.
-- The approved red/black Production Network section remains unchanged.
-- Services and Upcoming Ventures remain feature-flagged off until client content is finalized.
-
-## Stack
-
-React 18, Vite, Framer Motion, Lucide React, centralized CSS custom properties, reusable data-driven components, and responsive CSS.
-
-Framer Motion remains the single motion layer for this prototype. GSAP is intentionally not mixed in unless a later showreel/pinned-scroll sequence genuinely needs timeline/scrub control.
-
-## Run
-
+## Start locally
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
-## Build
-
+## Production build
 ```bash
 npm run build
+npm run preview
 ```
+Output is `dist/` — for standard cPanel hosting, deploy **the contents** of `dist/` into the confirmed document root, not the source code. Test preview URL first; do not delete existing cPanel files without a backup and owner approval.
 
-Upload the generated `dist/` directory to a standard cPanel document root, or deploy the repository through Vercel/Netlify.
+### Current navigation
+About · Work · Services · Network · Contact.
 
+### Final-brief edits
+See `FINAL_BRIEF_CHANGELOG.md` for precise changes, content decisions and updates. Note in particular: **India removed**, **07 markets**, **12 services**, official Seven Films logo, latest contact details and phone from the final brief. `Upcoming Ventures` is intentionally hidden.
 
-## V7 notes
-The production-network layout uses the preferred V4 red/black composition. Partner artwork uses the V5 safe padded crops. The contact/footer has compact actionable rows and proper social-platform icons; company-specific social URLs must be supplied before those icons are made live links.
+### Architecture
+- React 18, Vite 5, Framer Motion
+- Lucide React, React Icons
+- Separate components under `src/components/`
+- Data at `src/data/siteData.js`
+- CSS variables at `src/styles/tokens.css`, styles in `global.css` and `components.css`
+- One-page anchors. No Node.js server is required after building the static output.
+
+### Final client confirmations
+- Official brand guidelines for contrast-optimized logo on dark backgrounds
+- The provided brief's wording contains **Indigo**; site copy uses **Seven Films** instead (confirm editorial text and the **over 20 years** claim)
+- Social handles/URLs (icons are placeholders, not fake links)
+- Project credits and portfolio permissions
+- Hosting/domain SSL and cPanel document root
+
+### Test checklist
+Desktop (1440+), laptop (1024), tablet (768), mobile (390/375/320): check nav, headline wrapping, new about content, Services, 7 network markets, all brand/partner logos, clickable contact info and animated counters. Respect reduced-motion settings.

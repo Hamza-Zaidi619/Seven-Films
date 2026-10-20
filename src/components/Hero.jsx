@@ -35,8 +35,8 @@ export default function Hero() {
             className="hero__kicker-row"
             {...enter({ opacity: 0, x: -18, y: 0 }, 0.24, 0.76)}
           >
-            <span className="hero__kicker">Karachi-based production studio</span>
-            <span className="hero__edition">Local craft / Global network</span>
+            <span className="hero__kicker">A Premium Video Production Consultant Company.</span>
+            <span className="hero__edition">Creative consultancy / International network</span>
           </motion.div>
 
           <motion.h1
@@ -51,8 +51,7 @@ export default function Hero() {
             {...enter({ opacity: 0, x: 0, y: 24 }, 0.64, 0.92)}
           >
             <p>
-              Full-service film, TV commercial and branded-content production from Karachi,
-              connected to an international production network.
+              Full Service Content Production Consultancy Providers, connected to International Production Network.
             </p>
             <div className="hero__actions">
               <a className="button button--light hero__primary-action" href="#work">
@@ -93,7 +92,7 @@ export default function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: reduceMotion ? 0 : 0.76, delay: reduceMotion ? 0 : 1.02, ease: premiumEase }}
       >
-        <span>Your local and global production partner</span>
+        <span>Your global video production partner</span>
         <span>Scroll to explore ↓</span>
       </motion.div>
     </section>

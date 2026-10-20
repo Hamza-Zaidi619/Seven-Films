@@ -14,7 +14,7 @@ export default function WorkGrid() {
       <div className="container">
         <div className="work-heading">
           <Reveal direction="left" distance={24}>
-            <SectionEyebrow dark>02 / Selected work</SectionEyebrow>
+            <SectionEyebrow dark>03 / Selected work</SectionEyebrow>
             <h2 className="display-heading display-heading--light">Made to move.<br /><span>Built to remember.</span></h2>
           </Reveal>
 
