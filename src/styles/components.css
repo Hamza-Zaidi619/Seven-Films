@@ -1050,3 +1050,156 @@
   .contact__intro-note { max-width: 100%; }
   .contact__email { overflow-wrap: anywhere; }
 }
+
+
+/* V9 — Production partners: responsive editorial carousel, original 5-column visual rhythm retained. */
+.partner-strip__header--carousel {
+  align-items: center;
+}
+.partner-carousel__tools {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(15px, 2vw, 30px);
+  min-width: 0;
+}
+.partner-carousel__context {
+  color: rgba(255,255,255,.48);
+  white-space: nowrap;
+}
+.partner-carousel__count {
+  font-size: 11px;
+  letter-spacing: .12em;
+  font-variant-numeric: tabular-nums;
+  color: #fff;
+  white-space: nowrap;
+}
+.partner-carousel__count i { font-style: normal; color: rgba(255,255,255,.27); margin-inline: 5px; }
+.partner-carousel__actions { display: flex; gap: 5px; }
+.partner-carousel__arrow {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255,255,255,.24);
+  background: transparent;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: color .3s ease, background .3s ease, border-color .3s ease;
+}
+.partner-carousel__arrow:hover:not(:disabled),
+.partner-carousel__arrow:focus-visible { background: var(--color-red); border-color: var(--color-red); color: #fff; }
+.partner-carousel__arrow:focus-visible,
+.partner-logo__plate--link:focus-visible,
+.partner-carousel__track:focus-visible { outline: 2px solid var(--color-red); outline-offset: 3px; }
+.partner-carousel__arrow:disabled { opacity: .27; cursor: not-allowed; }
+.partner-strip__logos.partner-carousel__track {
+  display: flex;
+  flex-wrap: nowrap;
+  grid-template-columns: none;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-inline: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  touch-action: pan-x pan-y;
+  margin-top: 26px;
+  border-left: 1px solid rgba(255,255,255,.12);
+  border-top: 1px solid rgba(255,255,255,.12);
+}
+.partner-carousel__track::-webkit-scrollbar { display: none; }
+.partner-carousel__track .partner-logo {
+  flex: 0 0 20%;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  min-width: 0;
+  min-height: 172px;
+  padding: 25px;
+  border-right: 1px solid rgba(255,255,255,.12);
+  border-bottom: 1px solid rgba(255,255,255,.12);
+}
+.partner-carousel__track .partner-logo__plate { position: relative; width: min(158px, 78%); height: auto; aspect-ratio: 2/1; }
+.partner-logo__plate--link { cursor: pointer; }
+.partner-logo__launch {
+  position: absolute; right: 5px; top: 5px;
+  color: var(--color-red); opacity: 0;
+  transition: opacity .2s ease;
+}
+.partner-logo__plate--link:hover .partner-logo__launch,
+.partner-logo__plate--link:focus-visible .partner-logo__launch { opacity: 1; }
+.partner-carousel__rail {
+  height: 2px;
+  margin-top: 15px;
+  background: rgba(255,255,255,.13);
+  overflow: hidden;
+}
+.partner-carousel__rail-fill {
+  display: block;
+  width: 100%; height: 100%;
+  background: var(--color-red);
+  transform-origin: 0 50%;
+  transition: transform .23s ease;
+}
+.partner-carousel__hint {
+  margin: 11px 0 0;
+  color: rgba(255,255,255,.44);
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.partner-carousel__hint span { color: var(--color-red); }
+@media (max-width: 1100px) {
+  .partner-carousel__track .partner-logo { flex-basis: 33.333333%; }
+}
+@media (max-width: 720px) {
+  .partner-strip__header--carousel { flex-direction: row; align-items: center; gap: 14px; }
+  .partner-carousel__context { display: none; }
+  .partner-carousel__tools { gap: 11px; }
+  .partner-carousel__arrow { width: 36px; height: 36px; }
+  .partner-carousel__track .partner-logo { flex-basis: 50%; min-height: 148px; padding: 20px 12px; }
+  .partner-carousel__track .partner-logo__plate { width: min(158px, 86%); }
+}
+@media (max-width: 480px) {
+  .partner-carousel__track .partner-logo { flex-basis: 78%; min-height: 164px; padding: 20px; }
+  .partner-carousel__track .partner-logo__plate { width: min(180px, 84%); }
+  .partner-strip__header--carousel { align-items: flex-start; }
+  .partner-carousel__count { font-size: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .partner-carousel__track { scroll-behavior: auto !important; }
+  .partner-carousel__rail-fill { transition: none; }
+}
+
+/* V10 — pre-launch privacy switches (see siteConfig in src/data/siteData.js).
+   Whole hidden blocks are removed from layout, rather than visually obscured. */
+.relationships--standalone {
+  padding-bottom: clamp(72px, 8vw, 112px);
+}
+.relationships--standalone .brand-strip__logos {
+  margin-bottom: 0;
+}
+.contact__panel--private .contact__primary {
+  min-height: 318px;
+}
+.contact__panel--private .contact__detail--row,
+.contact__panel--private .contact__detail--row:last-child {
+  min-height: 100px;
+}
+@media (max-width: 1080px) {
+  .contact__panel--private .contact__primary {
+    min-height: 290px;
+  }
+}
+@media (max-width: 720px) {
+  .contact__panel--private .contact__primary {
+    min-height: 0;
+    padding-top: 32px;
+    padding-bottom: 34px;
+  }
+  .contact__panel--private .contact__detail--row,
+  .contact__panel--private .contact__detail--row:last-child {
+    min-height: 90px;
+  }
+}

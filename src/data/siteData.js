@@ -1,7 +1,11 @@
 export const siteConfig = {
   showServices: true,
   showUpcomingVentures: false,
-  showProductionPartners: true,
+  // Temporarily disabled until client-supplied partner images are approved.
+  showProductionPartners: false,
+  // Contact names and direct telephone are retained in data for a later release.
+  showContactPeople: false,
+  showContactPhone: false,
 }
 
 export const navItems = [
@@ -14,7 +18,7 @@ export const navItems = [
 
 export const studioFacts = [
   { value: 'Karachi', label: 'Production base' },
-  { value: '07', target: 7, pad: 2, label: 'Production markets' },
+  { value: '08', target: 8, pad: 2, label: 'Production markets' },
   { value: '100+', target: 100, suffix: '+', label: 'TVCs, events & reality shows' },
 ]
 
@@ -26,6 +30,7 @@ export const markets = [
   'Sri Lanka',
   'Singapore',
   'Poland',
+  'Malaysia',
 ]
 
 export const works = [
@@ -73,11 +78,12 @@ export const brandLogos = [
 ]
 
 export const partnerLogos = [
-  { src: '/assets/partner-01.png', alt: 'Production partner mark from supplied profile' },
-  { src: '/assets/partner-02.png', alt: 'Epic Pictures' },
-  { src: '/assets/partner-03.png', alt: 'Production partner mark from supplied profile' },
+  { src: '/assets/partner-macaw.png', alt: 'Macaw Post Production', url: 'https://macawpostproduction.com/' },
+  { src: '/assets/partner-02.png', alt: 'OEC6 Middle East' },
+  { src: '/assets/partner-03.png', alt: 'Epic Pictures' },
   { src: '/assets/partner-04.png', alt: 'ARY Digital' },
   { src: '/assets/partner-05.png', alt: 'Elite Films' },
+  { src: '/assets/partner-two9two.png', alt: 'Two9Two Production Studios', url: 'https://www.facebook.com/people/Two9Two-Production-Studios/61573702607896/' },
 ]
 
 export const contact = {

@@ -1,7 +1,7 @@
 import { ArrowUpRight, Globe2, Mail, MapPin, Phone } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaVimeoV } from 'react-icons/fa'
-import { contact } from '../data/siteData'
+import { contact, siteConfig } from '../data/siteData'
 import BrandLockup from './BrandLockup'
 import Reveal from './Reveal'
 import { premiumEase } from '../motion/presets'
@@ -14,12 +14,13 @@ const socialChannels = [
 ]
 
 const details = [
-  {
+  // Kept for later publication; currently the phone row is not rendered.
+  ...(siteConfig.showContactPhone ? [{
     icon: Phone,
     label: `Producer · ${contact.producer}`,
     value: contact.phone,
     href: `tel:${contact.phone.replace(/\s/g, '')}`,
-  },
+  }] : []),
   {
     icon: Mail,
     label: 'Email',
@@ -64,7 +65,7 @@ export default function Contact() {
           </Reveal>
         </div>
 
-        <div className="contact__panel contact__panel--compact">
+        <div className={`contact__panel contact__panel--compact${!siteConfig.showContactPeople || !siteConfig.showContactPhone ? ' contact__panel--private' : ''}`}>
           <Reveal className="contact__primary" direction="left" distance={20} delay={0.04}>
             <span className="contact__primary-kicker">Start a production enquiry</span>
             <a className="contact__email" href={`mailto:${contact.email}`}>
@@ -72,13 +73,15 @@ export default function Contact() {
               <ArrowUpRight />
             </a>
             <p>Commercials, film, branded content and international production consultancy, guided by an experienced team.</p>
-            <div className="contact__people">
-              <div><span>Proprietor</span><strong>{contact.owner}</strong></div>
-              <div><span>Producer</span><strong>{contact.producer}</strong></div>
-            </div>
+            {siteConfig.showContactPeople && (
+              <div className="contact__people">
+                <div><span>Proprietor</span><strong>{contact.owner}</strong></div>
+                <div><span>Producer</span><strong>{contact.producer}</strong></div>
+              </div>
+            )}
           </Reveal>
 
-          <div className="contact__directory contact__directory--rows">
+          <div className="contact__directory contact__directory--rows" aria-label="Company contact details">
             {details.map((item, index) => {
               const Icon = item.icon
               return (
