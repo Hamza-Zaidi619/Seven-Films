@@ -4,12 +4,16 @@ import { works } from '../data/siteData'
 import Reveal from './Reveal'
 import SectionEyebrow from './SectionEyebrow'
 import WorkCard from './WorkCard'
+import WorkVideoModal from './WorkVideoModal'
 
 export default function WorkGrid() {
   const [expanded, setExpanded] = useState(false)
+  const [activePreview, setActivePreview] = useState(null)
+  const [playing, setPlaying] = useState(null)
   const visible = useMemo(() => expanded ? works : works.slice(0, 9), [expanded])
 
   return (
+    <>
     <section className="section section--dark work-section" id="work">
       <div className="container">
         <div className="work-heading">
@@ -29,7 +33,19 @@ export default function WorkGrid() {
         </div>
 
         <div className="work-grid">
-          {visible.map((work, index) => <WorkCard key={`${work.title}-${index}`} work={work} index={index} />)}
+          {visible.map((work, index) => (
+            <WorkCard
+              key={`${work.title}-${index}`}
+              work={work}
+              index={index}
+              previewActive={!playing && activePreview === index}
+              onPreview={setActivePreview}
+              onOpen={(selectedWork, selectedIndex) => {
+                setActivePreview(null)
+                setPlaying({ work: selectedWork, index: selectedIndex })
+              }}
+            />
+          ))}
         </div>
 
         {!expanded && (
@@ -39,5 +55,7 @@ export default function WorkGrid() {
         )}
       </div>
     </section>
+    {playing && <WorkVideoModal selection={playing} onClose={() => setPlaying(null)} />}
+    </>
   )
 }
