@@ -36,7 +36,7 @@ const details = [
   },
   {
     icon: MapPin,
-    label: 'Karachi office',
+    label: 'Pakistan office',
     value: contact.address,
     href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(contact.address)}`,
     external: true,
@@ -59,7 +59,7 @@ export default function Contact() {
           </Reveal>
 
           <Reveal className="contact__intro-note" direction="right" distance={20} delay={0.1}>
-            <span>Karachi / Pakistan</span>
+            <span>Pakistan</span>
             <strong className="contact__question">Do you have any questions?</strong>
             <p>Your global video production partner.</p>
           </Reveal>

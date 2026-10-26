@@ -23,19 +23,19 @@ export default function WorkGrid() {
           </Reveal>
 
           <Reveal className="work-heading__editorial" direction="right" distance={22} delay={0.1}>
-            <span className="micro-label micro-label--light">Profile selection</span>
+            <span className="micro-label micro-label--light">Latest releases</span>
             <p>
-              A curated selection of commercials, entertainment and branded stories produced with
-              leading talent and brands.
+              Commercials, entertainment and branded stories from Seven Films on Vimeo,
+              presented from newest to oldest.
             </p>
-            <div className="work-heading__stats"><strong>{String(works.length).padStart(2, '0')}</strong><span>Projects shown in this profile</span></div>
+            <div className="work-heading__stats"><strong>{String(works.length).padStart(2, '0')}</strong><span>Films from our Vimeo channel</span></div>
           </Reveal>
         </div>
 
         <div className="work-grid">
           {visible.map((work, index) => (
             <WorkCard
-              key={`${work.title}-${index}`}
+              key={work.id}
               work={work}
               index={index}
               previewActive={!playing && activePreview === index}
@@ -48,7 +48,7 @@ export default function WorkGrid() {
           ))}
         </div>
 
-        {!expanded && (
+        {!expanded && works.length > 9 && (
           <button type="button" className="button button--outline button--center" onClick={() => setExpanded(true)}>
             View full filmography <ArrowDown size={15} />
           </button>

@@ -21,7 +21,7 @@ export default function About() {
               and video production across multiple international markets.
             </p>
             <p className="about-body">
-              Based in Karachi, our model brings directors, producers, cinematographers, animators,
+              Based in Pakistan, our model brings directors, producers, cinematographers, animators,
               editors and designers together around one goal: create compelling work that connects
               brand objectives with the right audience.
             </p>
@@ -52,7 +52,7 @@ export default function About() {
             </div>
             <div className="studio-story__who-body">
               <strong>Your Global Production Partner.</strong>
-              <p>Our top-tier team comprises premium talent throughout the industry!</p>
+              <p>Our top-tier team comprises talent throughout the industry!</p>
               <p>We have expertise in both creative and technical capacities, delivering exceptional content across television, brand videos, pitch videos, corporate videos, documentaries, music videos and designer social media videos.</p>
               <p>At Seven Films we have made video production an art form, allowing our producers and support staff to manage logistics and preparation so our creative team can deliver an outstanding production.</p>
               <span>From first concept to final frame.</span>

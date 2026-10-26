@@ -14,7 +14,7 @@ export default function Services() {
           </Reveal>
           <Reveal className="services-hero__side" direction="right" distance={22} delay={0.08}>
             <span className="micro-label">Full-service production consultancy</span>
-            <p>Headquartered in Karachi, Seven Films draws on decades of production experience to create compelling work across formats, platforms and markets.</p>
+            <p>Headquartered in Pakistan, Seven Films draws on decades of production experience to create compelling work across formats, platforms and markets.</p>
             <a href="#contact" className="text-link">Discuss a project <ArrowUpRight size={16}/></a>
           </Reveal>
         </div>

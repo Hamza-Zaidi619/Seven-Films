@@ -35,7 +35,7 @@ export default function Hero() {
             className="hero__kicker-row"
             {...enter({ opacity: 0, x: -18, y: 0 }, 0.24, 0.76)}
           >
-            <span className="hero__kicker">A Premium Video Production Consultant Company.</span>
+            <span className="hero__kicker">A Video Production Consultant Company.</span>
             <span className="hero__edition">Creative consultancy / International network</span>
           </motion.div>
 
@@ -74,7 +74,7 @@ export default function Hero() {
         >
           <div className="hero__sidecard-top">
             <span>SF / Profile</span>
-            <span>Est. Karachi</span>
+            <span>Est. Pakistan</span>
           </div>
           <strong className="hero__sidecard-title">
             <span>Local</span>
