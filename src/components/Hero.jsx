@@ -19,10 +19,20 @@ export default function Hero() {
         transition={{ duration: reduceMotion ? 0 : motionTiming.heroMedia, ease: premiumEase }}
         aria-hidden="true"
       >
-        <picture>
+        <picture className="hero__poster">
           <source media="(max-width: 720px)" srcSet="/assets/behind-the-scenes-mobile.jpeg" />
           <img src="/assets/behind-the-scenes.jpeg" alt="" />
         </picture>
+        {!reduceMotion && (
+          <iframe
+            className="hero__video"
+            src="https://player.vimeo.com/video/1238799755?h=ecdead48b5&background=1&autoplay=1&muted=1&loop=1&controls=0&title=0&byline=0&portrait=0&dnt=1"
+            title="Seven Films showreel"
+            allow="autoplay; fullscreen; picture-in-picture"
+            referrerPolicy="strict-origin-when-cross-origin"
+            tabIndex="-1"
+          />
+        )}
         <div className="hero__scrim" />
         <div className="hero__grain" />
       </motion.div>
