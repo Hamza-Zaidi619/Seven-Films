@@ -1,9 +1,38 @@
+import { useEffect, useRef, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowDown, Play } from 'lucide-react'
 import { motionTiming, premiumEase } from '../motion/presets'
 
 export default function Hero() {
   const reduceMotion = useReducedMotion()
+  const videoRef = useRef(null)
+  const [videoPlaying, setVideoPlaying] = useState(false)
+
+  useEffect(() => {
+    if (reduceMotion) return undefined
+
+    const onMessage = (message) => {
+      if (message.origin !== 'https://player.vimeo.com' || message.source !== videoRef.current?.contentWindow) return
+      let data = message.data
+      if (typeof data === 'string') {
+        try { data = JSON.parse(data) } catch { return }
+      }
+      if (data?.event === 'ready') {
+        videoRef.current?.contentWindow?.postMessage({ method: 'addEventListener', value: 'play' }, 'https://player.vimeo.com')
+        videoRef.current?.contentWindow?.postMessage({ method: 'getPaused' }, 'https://player.vimeo.com')
+      }
+      if (data?.event === 'play') setVideoPlaying(true)
+      if (data?.method === 'getPaused' && data.value === false) setVideoPlaying(true)
+    }
+
+    window.addEventListener('message', onMessage)
+    return () => window.removeEventListener('message', onMessage)
+  }, [reduceMotion])
+
+  const subscribeToPlayback = () => {
+    videoRef.current?.contentWindow?.postMessage({ method: 'addEventListener', value: 'play' }, 'https://player.vimeo.com')
+    videoRef.current?.contentWindow?.postMessage({ method: 'getPaused' }, 'https://player.vimeo.com')
+  }
   const enter = (initial, delay, duration = motionTiming.heroSupport) => ({
     initial: reduceMotion ? false : initial,
     animate: { opacity: 1, x: 0, y: 0 },
@@ -19,20 +48,21 @@ export default function Hero() {
         transition={{ duration: reduceMotion ? 0 : motionTiming.heroMedia, ease: premiumEase }}
         aria-hidden="true"
       >
-        <picture className="hero__poster">
-          <source media="(max-width: 720px)" srcSet="/assets/behind-the-scenes-mobile.jpeg" />
-          <img src="/assets/behind-the-scenes.jpeg" alt="" />
-        </picture>
         {!reduceMotion && (
           <iframe
-            className="hero__video"
+            ref={videoRef}
+            className={`hero__video${videoPlaying ? ' hero__video--playing' : ''}`}
             src="https://player.vimeo.com/video/1238799755?h=ecdead48b5&background=1&autoplay=1&muted=1&loop=1&controls=0&title=0&byline=0&portrait=0&dnt=1"
             title="Seven Films showreel"
             allow="autoplay; fullscreen; picture-in-picture"
             referrerPolicy="strict-origin-when-cross-origin"
             tabIndex="-1"
+            onLoad={subscribeToPlayback}
           />
         )}
+        <div className={`hero__standby${videoPlaying ? ' hero__standby--hidden' : ''}`}>
+          <div className="hero__standby-line" />
+        </div>
         <div className="hero__scrim" />
         <div className="hero__grain" />
       </motion.div>
@@ -73,6 +103,7 @@ export default function Hero() {
                 <ArrowDown size={16} />
               </a>
             </div>
+            <p className="hero__group-note">Macaw Post Production &amp; Spice Studio are part of the Seven Films Group.</p>
           </motion.div>
         </div>
 
@@ -83,16 +114,15 @@ export default function Hero() {
           transition={{ duration: reduceMotion ? 0 : 1.08, delay: reduceMotion ? 0 : 0.76, ease: premiumEase }}
         >
           <div className="hero__sidecard-top">
-            <span>SF / Profile</span>
-            <span>Est. Pakistan</span>
+            <span>SF / Group</span>
+            <span>Production network</span>
           </div>
-          <strong className="hero__sidecard-title">
-            <span>Local</span>
-            <span className="hero__sidecard-global"><em>+</em> Global</span>
-          </strong>
-          <div className="hero__sidecard-bottom">
-            <span>Film</span><span>TVC</span><span>Content</span><span>Production support</span>
+          <div className="hero__sidecard-studios">
+            <strong>Macaw<br />Post Production</strong>
+            <span className="hero__sidecard-divider" aria-hidden="true" />
+            <strong>Spice Studio</strong>
           </div>
+          <p className="hero__sidecard-caption">Part of the Seven Films Group.</p>
         </motion.aside>
       </div>
 
